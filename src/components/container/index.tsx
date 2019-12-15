@@ -4,21 +4,25 @@ import Search from "../search";
 import Actions from "../actions";
 import Repos from "../repos&stars";
 import "../search/styles.css";
+import "../actions/styles.css";
 
 export default function Container({
   userInfo,
   repos,
-  starred
+  starred,
+  handleSearch,
+  getRepos,
+  getStarreds
 }: any): JSX.Element {
   return (
     <div className="app">
-      <Search userinfo={userInfo} />
-      {!!userInfo && <UserInfo userinfo={userInfo} />}
-      {!!userInfo && <Actions />}
-      {!repos.lenght && (
+      <Search handleSearch={handleSearch} />
+      {userInfo && <UserInfo userinfo={userInfo} />}
+      {userInfo && <Actions getRepos={getRepos} getStarreds={getStarreds} />}
+      {repos.lenght && (
         <Repos className="repos" title="Repositorios" repos={repos} />
       )}
-      {!starred.lenght && (
+      {starred.lenght && (
         <Repos className="starred" title="Stars" repos={starred} />
       )}
     </div>
