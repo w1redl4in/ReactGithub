@@ -1,4 +1,4 @@
-import Container from "../components/container";
+import Container from ".";
 import React from "react";
 import { render, waitForElement } from "@testing-library/react";
 
