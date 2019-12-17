@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-export default function Repos({ className, title, repos }: any) {
+export default function Repos({ className, title, repos }: any): JSX.Element {
   return (
     <div className="repos">
       <h2>{title}</h2>

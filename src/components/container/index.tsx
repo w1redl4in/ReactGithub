@@ -3,8 +3,7 @@ import UserInfo from "../user-info";
 import Search from "../search";
 import Actions from "../actions";
 import Repos from "../repos&stars";
-import "../search/styles.css";
-import "../actions/styles.css";
+import LoadingBar from "../loadingbar";
 
 export default function Container({
   userInfo,
@@ -12,17 +11,19 @@ export default function Container({
   starred,
   handleSearch,
   getRepos,
-  getStarreds
+  getStarreds,
+  isFetching
 }: any): JSX.Element {
   return (
     <div className="app">
-      <Search handleSearch={handleSearch} />
-      {userInfo && <UserInfo userinfo={userInfo} />}
-      {userInfo && <Actions getRepos={getRepos} getStarreds={getStarreds} />}
-      {repos.lenght && (
+      <Search isDisabled={isFetching} handleSearch={handleSearch} />
+      {isFetching && <LoadingBar />}
+      {!!userInfo && <UserInfo userinfo={userInfo} />}
+      {!!userInfo && <Actions getRepos={getRepos} getStarreds={getStarreds} />}
+      {!!repos.lenght && (
         <Repos className="repos" title="Repositorios" repos={repos} />
       )}
-      {starred.lenght && (
+      {!!starred.lenght && (
         <Repos className="starred" title="Stars" repos={starred} />
       )}
     </div>

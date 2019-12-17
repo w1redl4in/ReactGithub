@@ -1,7 +1,8 @@
 import React from "react";
 import Axios from "axios";
+import "./styles.css";
 
-export default function Search({ handleSearch }: any): JSX.Element {
+export default function Search({ handleSearch, isDisabled }: any): JSX.Element {
   return (
     <div className="search">
       <input
@@ -9,6 +10,7 @@ export default function Search({ handleSearch }: any): JSX.Element {
         type="search"
         placeholder="Digite o nome do usuário"
         onKeyUp={handleSearch}
+        disabled={isDisabled}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 
 export default function Actions({ getRepos, getStarreds }: any): JSX.Element {
   return (
