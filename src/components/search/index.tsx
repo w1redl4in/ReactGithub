@@ -7,6 +7,7 @@ export default function Search({ handleSearch, isDisabled }: any): JSX.Element {
     <div className="search">
       <input
         className="bar"
+        data-testid="searchbar"
         type="search"
         placeholder="Digite o nome do usuário"
         onKeyUp={handleSearch}

@@ -37,31 +37,44 @@ const App: React.FC = () => {
     }
   }
 
+  // async function getRepos() {
+  //   const result = await Axios.get(
+  //     `https://api.github.com/users/${userInfo.login}/repos`
+  //   );
+
+  //   setRepos([
+  //     {
+  //       name: result.data[0].name,
+  //       link: result.data[0].html_url
+  //     }
+  //   ]);
+  // }
   async function getRepos() {
     const result = await Axios.get(
       `https://api.github.com/users/${userInfo.login}/repos`
     );
-    setRepos([
-      {
-        name: result.data[0].name,
-        link: result.data[0].html_url
-      }
-    ]);
+    result.data.map((res: any) => {
+      setRepos([
+        {
+          name: res.name,
+          link: res.html_url
+        }
+      ]);
+    });
   }
 
   async function getStarreds() {
     const result = await Axios.get(
       `https://api.github.com/users/${userInfo.login}/starred`
     );
-    console.log(result);
-
-    setStarred([
-      {
-        name: result.data[0].name,
-        link: result.data[0].html_url
-      }
-    ]);
-    console.log(starred);
+    result.data.map((res: any) => {
+      setStarred([
+        {
+          name: res.name,
+          link: res.html_url
+        }
+      ]);
+    });
   }
 
   return (

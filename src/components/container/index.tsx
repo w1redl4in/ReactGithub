@@ -19,13 +19,9 @@ export default function Container({
       <Search isDisabled={isFetching} handleSearch={handleSearch} />
       {isFetching && <LoadingBar />}
       {!!userInfo && <UserInfo userinfo={userInfo} />}
-      {!!userInfo && <Actions getRepos={getRepos} getStarreds={getStarreds} />}
-      {!!repos.lenght && (
-        <Repos className="repos" title="Repositorios" repos={repos} />
-      )}
-      {!!starred.lenght && (
-        <Repos className="starred" title="Stars" repos={starred} />
-      )}
+      {userInfo && <Actions getRepos={getRepos} getStarreds={getStarreds} />}
+      {repos && <Repos className="repos" title="Repositorios" repos={repos} />}
+      {starred && <Repos className="starred" title="Stars" repos={starred} />}
     </div>
   );
 }
